@@ -8,7 +8,7 @@ const FirstComponent = memo(({ name }) => (
 // class component
 class SecondComponent extends Component {
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return nextProps.name === this.props.name;
+        return !(nextProps.name === this.props.name);
     }
 
     render() {
