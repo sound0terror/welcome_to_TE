@@ -49,5 +49,13 @@ const tileArr: Array<ITile> = [
     },
 ];
 
+const getResult = (tiles: ITile[]): IResult => {
+    const activeTiles: ITile[] = tiles.filter((tile: ITile) => tile.isActive);
+    const totalPriceSum: number = activeTiles.reduce((acc: number, tile: ITile) => {return tile.price + acc}, 0);
+    const tileCount: number = activeTiles.length;
+    const averagePriceSum: number = totalPriceSum / tileCount;
+    return {totalPriceSum, tileCount, averagePriceSum};
+}
 // write You code here
-// const result: IResult = ...
+const result: IResult = getResult(tileArr);
+
