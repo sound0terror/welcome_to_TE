@@ -1,31 +1,17 @@
-import { useState } from 'react';
+import React, { useState, memo } from 'react';
 
-const Block1 = ({ mouseEnterCallbak, imgSrc, imgAlt }) => {
+const Block = memo(({mouseEnterCallback, children}) => {
     const [ isActive, setActive ] = useState(false);
 
     const mouseEnterHandler = () => {
         setActive(true);
-        mouseEnterCallbak();
+        mouseEnterCallback();
     }
 
     return (
         <div onMouseEnter={mouseEnterHandler} className={ isActive ? 'active': '' }>
-            <img src={imgSrc} alt={imgAlt} />
+            {children}
         </div>
-    );
-}
+    )
 
-const Block2 = ({ mouseEnterCallbak, content }) => {
-    const [ isActive, setActive ] = useState(false);
-
-    const mouseEnterHandler = () => {
-        setActive(true);
-        mouseEnterCallbak();
-    }
-
-    return (
-        <div onMouseEnter={mouseEnterHandler} className={ isActive ? 'active': '' }>
-            <p>BLock2 content: {content}</p>
-        </div>
-    );
-}
+})
